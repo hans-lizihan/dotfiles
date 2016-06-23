@@ -1,0 +1,59 @@
+{
+  "always_show_minimap_viewport": true,
+  "auto_complete": true,
+  "auto_complete_commit_on_tab": true,
+  "auto_complete_selector": "source, text",
+  "binary_file_patterns":
+  [
+    "node_modules/*",
+    "bower_components/*",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.ttf",
+    "*.tga",
+    "*.dds",
+    "*.ico",
+    "*.eot",
+    "*.pdf",
+    "*.swf",
+    "*.jar",
+    "*.zip"
+  ],
+  "bold_folder_labels": true,
+  "caret_style": "phase",
+  "color_scheme": "Packages/User/Color Highlighter/themes/Facebook (SL).tmTheme",
+  "copy_with_empty_selection": true,
+  "detect_indentation": true,
+  "draw_white_space": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "folder_exclude_patterns":
+  [
+    ".svn",
+    ".git",
+    ".hg",
+    "CVS"
+  ],
+  "font_face": "Fira Mono For Powerline",
+  "font_options":
+  [
+    "subpixel_antialias"
+  ],
+  "font_size": 14,
+  "highlight_line": true,
+  "ignored_packages":
+  [
+  ],
+  "index_files": true,
+  "line_numbers": true,
+  "line_padding_bottom": 6,
+  "line_padding_top": 6,
+  "margin": 0,
+  "material_theme_small_tab": true,
+  "overlay_scroll_bars": "enabled",
+  "tab_size": 2,
+  "theme": "Material-Theme.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "word_wrap": true
+}

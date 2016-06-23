@@ -1,0 +1,12 @@
+<snippet>
+  <content><![CDATA[
+<div class="form-group">
+  <label for="${1:name}" class="form-control-label">$1</label>
+  <input type="text" name="$1" id="$1" class="form-control">
+</div>
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>formfield</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html</scope>
+</snippet>
