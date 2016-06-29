@@ -1,0 +1,13 @@
+snippet = "echo" b
+<%= $0 %>
+endsnippet
+
+snippet if "erb if" b
+<%= if ${1:condition} do %>
+  $0
+<% end %>
+endsnippet
+
+snippet linkto "Link to" b
+<%= link_to '${1:name}', ${1:name}s_path %>
+endsnippet

@@ -1,0 +1,35 @@
+snippet reactinit "react webpack init" b
+var path = require('path');
+var webpack = require('webpack');
+
+var config = {
+  entry: {
+    app: path.join(__dirname, 'client/main.js')
+  },
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js',
+  },
+  devServer: {
+    inline: true,
+    hot: true,
+    contentBase: path.join(__dirname, 'build')
+  },
+  module: {
+    loaders: [
+      {
+        // A regexp to test the require path. accepts either js or jsx
+        test: /\.jsx?$/,
+        // The module to load. "babel" is short for "babel-loader"
+        loader: 'react-hot!babel?presets[]=es2015&presets[]=react',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+
+module.exports = config;
+endsnippet

@@ -1,0 +1,27 @@
+snippet desc "BDD describe"
+describe('$1', function() {
+  $0
+})
+endsnippet
+
+snippet desca "BDD describe"
+describe('$1', () => {
+  $0
+})
+endsnippet
+
+snippet ita "BDD it"
+it('$1', () => {
+  $0
+})
+endsnippet
+
+snippet it "BDD it"
+it('$1', function () {
+  $0
+})
+endsnippet
+
+snippet ee "Expect to equal"
+expect(${1:target}).to.equal($0)
+endsnippet

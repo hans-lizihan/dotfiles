@@ -1,0 +1,29 @@
+snippet = "echo"
+<%= $0 %>
+endsnippet
+
+snippet % "%"
+<% $0 %>
+endsnippet
+
+snippet if "if"
+<% if (${1:condition}) { %>
+  $0
+<% } %>
+endsnippet
+
+snippet forof "for of"
+<% for (${1:item} of ${2:items}) { %>
+  $0
+<% } %>
+endsnippet
+
+snippet for "for"
+<% for (let i = 0; i < ${1:items}.length; i++) { %>
+  $0
+<% } %>
+endsnippet
+
+snippet include "include"
+<%- include $0 %>
+endsnippet

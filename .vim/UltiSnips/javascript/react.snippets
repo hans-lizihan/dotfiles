@@ -1,0 +1,53 @@
+snippet 6rcc "create react component es6" b
+export default class `!p snip.rv=fn.split('.')[0].capitalize()` extends React.Component {
+	render() {
+		return (
+			<${1:div}>
+				$0
+			</${1/(\w+).*/$1/}>
+		)
+	}
+}
+endsnippet
+
+snippet rcc "create react component" b
+export default React.createClass({
+	render() {
+		return (
+			<${1:div}>
+				$0
+			</${1/(\w+).*/$1/}>
+		)
+	}
+})
+endsnippet
+
+snippet rinit "react getInitialState"
+getInitialState() {
+  $0
+}
+endsnippet
+
+snippet thiss "react this.setState()"
+this.setState({$0})
+endsnippet
+
+snippet 6rw "react widget" b
+const `!p snip.rv=fn.split('.')[0].capitalize()` = () => {
+	return (
+		<${1:div}>$0<$1>
+	)
+}
+endsnippet
+
+snippet ir "import react component es6" b
+import React from 'react'
+endsnippet
+
+snippet ird "import react-dom component es6" b
+import ReactDOM from 'react-dom'
+endsnippet
+
+snippet rdr "react-dom render method" b
+ReactDOM.render(<${1:Component} />, document.getElementById(${2:app}))
+endsnippet

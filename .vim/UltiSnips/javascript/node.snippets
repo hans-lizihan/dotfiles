@@ -1,0 +1,23 @@
+snippet rec "require modeul using constant" b
+const ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} = require('${1}')
+$0
+endsnippet
+
+snippet re "require using var" b
+var ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} = require('${1}')
+$0
+endsnippet
+
+snippet rqd "require debug" b
+const debug = require('debug')('${1:`!p snip.rv=fn.split('.'')[0]`}')
+$0
+endsnippet
+
+snippet ipt "import module" b
+import ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} from '${1}'
+$0
+endsnippet
+
+snippet me "module.exports" b
+module.exports = $0
+endsnippet
