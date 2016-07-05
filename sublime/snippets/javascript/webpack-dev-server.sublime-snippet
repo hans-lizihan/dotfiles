@@ -1,0 +1,30 @@
+<snippet>
+  <content><![CDATA[
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+
+const config = require('./webpack.config');
+
+new WebpackDevServer(webpack(config), {
+  contentBase: config.output.path,
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true,
+  status: {colors: true}
+}).listen(3000, 'localhost', (err, result) => {
+  if (err) {
+    return console.error(err);
+  }
+
+  console.log('listening at http://localhost:3000/');
+
+  return 0;
+});
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>webpack-dev-server</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+  <description>Webpack dev server hot reaload</description>
+</snippet>
