@@ -101,14 +101,14 @@ hi diffText     ctermfg=bg  guifg=bg      ctermbg=174 guibg=#df8787 cterm=none g
 """ HTML {{{3
 " hi htmlTag      ctermfg=146  guifg=#afafdf
 " hi htmlEndTag   ctermfg=146  guifg=#afafdf
-hi htmlTag      ctermfg=244
-hi htmlEndTag   ctermfg=244
-hi htmlArg	ctermfg=182  guifg=#dfafdf
-hi htmlValue	ctermfg=187  guifg=#dfdfaf
-hi htmlTitle	ctermfg=254  ctermbg=95
+hi htmlTag      ctermfg=248
+hi htmlEndTag   ctermfg=174
+hi htmlArg	    ctermfg=146 guifg=#dfafdf cterm=italic
+hi htmlValue	ctermfg=146 guifg=#dfdfaf
+hi htmlTitle	ctermfg=254
 " hi htmlArg	ctermfg=146
-" hi htmlTagName	ctermfg=146
-" hi htmlString	ctermfg=187
+hi htmlTagName	ctermfg=182
+hi htmlString	ctermfg=187
 """ django {{{3
 hi djangoVarBlock ctermfg=180
 hi djangoTagBlock ctermfg=150

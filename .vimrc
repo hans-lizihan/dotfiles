@@ -11,7 +11,7 @@ set hidden                                          " let vim to set hideen buff
 set number                                          " display line numbers
 set autoindent                                      " enables the auto indentation
 set showmode                                        " always show what mode we're currently editing in
-set nowrap                                          " don't wrap lines
+set wrap                                            " do wrap lines
 set backspace=indent,eol,start                      " allow backspacing over everything in insert mode
 set autoindent                                      " always set autoindenting on
 " set copyindent                                    " copy the previous indentation on autoindenting
@@ -41,7 +41,6 @@ augroup end
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "------------------Maps--------------------------
-nmap <Leader>c :tabedit $MYVIMRC<cr>               " edit the vimrc file
 " here are some ways to fast edit files
 " %% => path/to/current/directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -92,6 +91,9 @@ map <silent><leader>s :set spell!<cr>
 
 syntax enable                   " enable syntax highlighting
 
+" vim-javascript plugins
+let g:javascript_plugin_jsdoc = 1
+
 " vim-better-whitespace
 highlight ExtraWhitespace ctermbg=yellow
 autocmd BufWritePre * StripWhitespace
@@ -117,16 +119,60 @@ let g:user_emmet_leader_key=','
 
 " CtrlP config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|coverage|_build|priv)|(\.(swp|ico|git|svn))$'
 nmap <C-e> :CtrlPBufTag<cr>
 nmap <Leader>e :CtrlPMRUFiles<cr>
 
 " greplace config
-set grepprg=ag                                          " we want to use ag for the search
-let g:grep_cmd_opts = '--line-numbers --noheading'
+set grepprg=ack																" use ack for the search"
+let g:grep_cmd_opts = '--noheading'
 
 highlight LineNr ctermfg=grey
 
+" vim ale
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\}
+"let g:ale_sign_column_always = 1
+
+" syntatic vim
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = 'x'
+let g:syntastic_style_error_symbol = '?'
+let g:syntastic_warning_symbol = '!'
+let g:syntastic_style_warning_symbol = '@'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+highlight Comment cterm=italic
+highlight Type cterm=italic
+highlight Constant cterm=bold
+
 " Tips and notes
 " - zz to center the screen of current line
-" - tag
+" - gd highlight all of the existing defs in the file
+" - %  create a new file
+" - d  create a new directory
+" - R  rename the current file/dir
+" - D  delete the current file/dir
+" - z= correct wrong spells
+" - zg add current word to `good word` list
+" - C] go to definition in the manual
+" - Ct go back to the previous position
+" - CD half page down
+" - CU half page up
+" - CB page up
+" - CF page down

@@ -162,6 +162,8 @@
       <dict>
         <key>comment</key>
         <string>.style .na</string>
+        <key>fontStyle</key>
+        <string>italic</string>
         <key>foreground</key>
         <string>#90D6CD</string>
       </dict>
@@ -203,8 +205,8 @@
       <dict>
         <key>comment</key>
         <string>.style .nc</string>
-        
-        
+
+
         <key>foreground</key>
         <string>#E3C78A</string>
       </dict>
@@ -513,7 +515,7 @@
 
 
 
-    
+
 
     <dict>
       <key>name</key>
@@ -522,8 +524,8 @@
       <string>meta.diff.range, meta.diff.index, meta.separator</string>
       <key>settings</key>
       <dict>
-        
-        
+
+
         <key>comment</key>
         <string>.syntax .gc</string>
         <key>foreground</key>
@@ -571,8 +573,8 @@
     </dict>
 
 
-    
-    
+
+
 
     <dict>
       <key>name</key>
@@ -614,7 +616,7 @@
     <dict>
       <key>name</key>
       <string>Selectors</string>
-      
+
       <key>scope</key>
       <string>keyword.control.untitled, entity.other.attribute-name</string>
       <key>settings</key>
@@ -661,10 +663,10 @@
       </dict>
     </dict>
 
-  
 
-  
-    
+
+
+
 
     <dict>
       <key>name</key>
@@ -681,8 +683,8 @@
 
 
 
-    
-  
+
+
     <dict>
       <key>name</key>
       <string>Generic: Heading (single line)</string>
@@ -779,7 +781,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#D02000</string>
+                <string>#71baff</string>
             </dict>
         </dict><dict>
             <key>name</key>
@@ -789,7 +791,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#DDB700</string>
+                <string>#E3C78A</string>
             </dict>
         </dict><dict>
             <key>name</key>
