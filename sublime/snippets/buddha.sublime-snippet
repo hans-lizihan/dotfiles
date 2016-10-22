@@ -1,14 +1,5 @@
-snippet blk "block comment" b
-/*
-|--------------------------------------------------------------------------
-| ${1:comment}
-|--------------------------------------------------------------------------
-| $0
-|
-*/
-endsnippet
-
-snippet bud "buddha comment"
+<snippet>
+  <content><![CDATA[
 
                        _oo0oo_
                       o8888888o
@@ -34,4 +25,9 @@ snippet bud "buddha comment"
 
                佛祖保佑         永无BUG
               IN BUDDHA         NO BUG
-endsnippet
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>bud</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope></scope>
+</snippet>
