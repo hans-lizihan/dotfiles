@@ -9,7 +9,6 @@ Plugin 'othree/html5.vim'
 Plugin 'wavded/vim-stylus'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
-" Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mxw/vim-jsx'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'editorconfig/editorconfig-vim'
@@ -36,8 +35,8 @@ Plugin 'raimondi/delimitmate'
 Plugin 'groenewege/vim-less'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'tpope/vim-endwise'
-Plugin 'scrooloose/syntastic'
-" Plugin 'w0rp/ale'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 call vundle#end()
 
 filetype plugin indent on

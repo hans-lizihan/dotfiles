@@ -104,6 +104,7 @@ autocmd BufWritePre * StripWhitespace
 map <C-k> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeHijackNetrw=0
+let NERDTreeIgnore=['\~$', '\v(node_modules|public|target|dist|log|coverage|_build|priv)|(\.(swp|ico|git|svn|idea|nyc_output))$']
 
 " set the tagbar toggle
 nmap <C-\> :TagbarToggle<CR>
@@ -119,7 +120,7 @@ let g:user_emmet_leader_key=','
 
 " CtrlP config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|coverage|_build|priv)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|log|public|target|dist|coverage|_build|priv)|(\.(swp|ico|git|svn|idea|nyc_output))$'
 nmap <C-e> :CtrlPBufTag<cr>
 nmap <Leader>e :CtrlPMRUFiles<cr>
 
@@ -129,16 +130,16 @@ let g:grep_cmd_opts = '--noheading'
 
 highlight LineNr ctermfg=grey
 
-" vim ale
-"let g:ale_linters = {
-"\   'javascript': ['eslint'],
-"\}
-"let g:ale_sign_column_always = 1
+ "vim ale
+let g:ale_linters = {
+\   'javascript': ['eslint']
+\}
+let g:ale_sign_column_always = 1
 
 " syntatic vim
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 5
@@ -160,6 +161,8 @@ highlight link SyntasticStyleWarningSign SignColumn
 highlight Comment cterm=italic
 highlight Type cterm=italic
 highlight Constant cterm=bold
+
+nnoremap <Leader>j :set ft=json<CR> :%s/\\"/"/eg<CR>:%s/:{/:\r{/eg<CR>:%s/,"/,\r"/eg<CR>:%s/}/\r}/eg<CR>ggVG=
 
 " Tips and notes
 " - zz to center the screen of current line
