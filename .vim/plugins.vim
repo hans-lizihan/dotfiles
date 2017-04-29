@@ -37,6 +37,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'tpope/vim-endwise'
 Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'slashmili/alchemist.vim'
 call vundle#end()
 
 filetype plugin indent on

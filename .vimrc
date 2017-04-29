@@ -116,6 +116,11 @@ let g:UltiSnipsEditSplit="vertical"
 
 " emmet config
 let g:user_emmet_leader_key=','
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " CtrlP config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
