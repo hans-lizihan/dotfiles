@@ -35,8 +35,10 @@ Plugin 'raimondi/delimitmate'
 Plugin 'groenewege/vim-less'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'tpope/vim-endwise'
-"Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
+Plugin 'lepture/vim-jinja'
 call vundle#end()
 
 filetype plugin indent on
