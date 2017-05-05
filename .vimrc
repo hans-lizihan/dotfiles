@@ -28,8 +28,6 @@ let g:mapleader = ','
 set listchars=tab:▸\ ,eol:¬                         " when hit set list! show invisibles
 
 
-
-
 "------------------Autocommands------------------
 command! -nargs=* Wrap set wrap linebreak nolist    " Wrap shortcut
 augroup autosourcing
@@ -116,9 +114,9 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Snippets config
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 " emmet config
@@ -126,7 +124,7 @@ let g:user_emmet_leader_key=','
 
 " CtrlP config
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|public|target|dist|coverage|_build|priv)|(\.(swp|ico|git|svn|idea|nyc_output))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|coverage|_build|priv)|(\.(swp|ico|git|svn))$'
 nmap <C-e> :CtrlPBufTag<cr>
 nmap <Leader>e :CtrlPMRUFiles<cr>
 
@@ -136,36 +134,25 @@ let g:grep_cmd_opts = '--noheading'
 
 highlight LineNr ctermfg=grey
 
+highlight Comment cterm=italic
+highlight Type cterm=italic
+highlight Constant cterm=bold
+
+" emmet config
+let g:user_emmet_leader_key=','
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
  "vim ale
 let g:ale_linters = {
 \   'javascript': ['eslint']
 \}
 let g:ale_sign_column_always = 1
 
-" syntatic vim
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_error_symbol = 'x'
-let g:syntastic_style_error_symbol = '?'
-let g:syntastic_warning_symbol = '!'
-let g:syntastic_style_warning_symbol = '@'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
 set cursorline
-set nocursorcolumn
 autocmd FileType nerdtree setlocal nocursorcolumn
 highlight Comment cterm=italic
 highlight Type cterm=italic

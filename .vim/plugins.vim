@@ -39,6 +39,7 @@ Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 Plugin 'lepture/vim-jinja'
+Plugin 'slashmili/alchemist.vim'
 call vundle#end()
 
 filetype plugin indent on
