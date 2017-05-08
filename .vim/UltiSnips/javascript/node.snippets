@@ -14,8 +14,16 @@ $0
 endsnippet
 
 snippet ipt "import module" b
-import ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} from '${1}'
-$0
+import `!p
+def formatVariableName(path):
+  parts = path.split('/')
+  module = parts[0]
+  if len(parts) > 1:
+    return parts[-1]
+  else:
+    return re.sub(r'[_\-]', '', module.title())
+snip.rv = formatVariableName(t[1])
+` from '${1}';$0
 endsnippet
 
 snippet me "module.exports" b
