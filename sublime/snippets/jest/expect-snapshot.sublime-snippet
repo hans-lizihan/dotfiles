@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[
-this.${1:onClick} = this.${1}.bind(this);
+expect($0).toMatchSnapshot();
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>bt</tabTrigger>
+	<tabTrigger>eem</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.js</scope>
 </snippet>

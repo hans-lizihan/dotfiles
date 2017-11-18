@@ -1,26 +1,21 @@
 <snippet>
 	<content><![CDATA[
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-class ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g} extends Component {
-	constructor(props) {
-		super(props);
-		${0}
-	}
+export default class ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g} extends PureComponent {
+	static propTypes = {
+
+	};
+
+	export default ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g};
 
 	render() {
 		return (
-			<div></div>
+			<div>${0}</div>
 		);
 	}
 }
-
-${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}.propTypes = {
-
-};
-
-export default ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g};
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>reactclass</tabTrigger>
