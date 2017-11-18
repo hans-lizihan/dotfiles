@@ -1,15 +1,14 @@
 snippet rec "require modeul using constant" b
-const ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} = require('${1}')
-$0
-endsnippet
-
-snippet re "require using var" b
-var ${2:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/$2/g}} = require('${1}')
-$0
-endsnippet
-
-snippet rqd "require debug" b
-const debug = require('debug')('${1:`!p snip.rv=fn.split('.'')[0]`}')
+const `!p
+def formatVariableName(path):
+  parts = path.split('/')
+  module = parts[0]
+  if len(parts) > 1:
+    return parts[-1]
+  else:
+    return re.sub(r'[_\-]', '', module.title())
+snip.rv = formatVariableName(t[1])
+` = require('${1}')
 $0
 endsnippet
 

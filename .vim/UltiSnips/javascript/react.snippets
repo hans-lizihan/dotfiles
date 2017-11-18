@@ -1,7 +1,8 @@
-snippet rcc "create react component es6" b
-import React from 'react';
+snippet reactclass "create react component es6" b
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-class `!p snip.rv=fn.split('.')[0].capitalize()` extends Component {
+
+export default class `!p snip.rv=fn.split('.')[0]` extends PureComponent {
 	render() {
 		return (
 			<${1:div}>
@@ -13,17 +14,13 @@ class `!p snip.rv=fn.split('.')[0].capitalize()` extends Component {
 endsnippet
 
 snippet reactpure "react widget" b
-const `!p snip.rv=fn.split('.')[0].capitalize()` = (props) => {
+import React from 'react';
+
+const `!p snip.rv=fn.split('.')[0]` = (props) => {
 	return (
 		<${1:div}>$0<$1>
-	)
-}
-endsnippet
+	);
+};
 
-snippet ir "import react component es6" b
-import React from 'react'
-endsnippet
-
-snippet ird "import react-dom component es6" b
-import ReactDOM from 'react-dom'
+export default `!p snip.rv=fn.split('.')[0]`;
 endsnippet
