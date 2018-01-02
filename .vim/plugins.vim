@@ -1,44 +1,58 @@
 filetype off
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py --js-completer
+  endif
+endfunction
+
 "--------------------Plugins----------------------
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'SirVer/ultisnips'
-Plugin 'othree/html5.vim'
-Plugin 'wavded/vim-stylus'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-scripts/BufOnly.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'skwp/greplace.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'posva/vim-vue'
-Plugin 'rizzatti/dash.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'raimondi/delimitmate'
-Plugin 'groenewege/vim-less'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'tpope/vim-endwise'
-Plugin 'w0rp/ale'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-Plugin 'lepture/vim-jinja'
-Plugin 'slashmili/alchemist.vim'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
+Plug 'digitaltoad/vim-pug'
+Plug 'SirVer/ultisnips'
+Plug 'othree/html5.vim'
+Plug 'wavded/vim-stylus'
+Plug 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'tpope/vim-surround'
+Plug 'skwp/greplace.vim'
+Plug 'mileszs/ack.vim'
+Plug 'posva/vim-vue'
+Plug 'rizzatti/dash.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'raimondi/delimitmate'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'tpope/vim-endwise'
+Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'ervandew/supertab'
+Plug 'lepture/vim-jinja'
+Plug 'slashmili/alchemist.vim'
+call plug#end()
 
 filetype plugin indent on
