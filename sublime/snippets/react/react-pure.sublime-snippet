@@ -1,11 +1,11 @@
 <snippet>
-	<content><![CDATA[
+  <content><![CDATA[
 import React from 'react';
 
 const ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g} = (props) => {
-	return (
-		<div>${0}</div>
-	);
+  return (
+    <div>${0}</div>
+  );
 };
 
 ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}.propTypes = {
@@ -15,8 +15,8 @@ ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g}.propTypes = {
 export default ${TM_FILENAME/(.?\w*)(?:\.\w+)*$/$1/g};
 
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>reactpure</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.js</scope>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>reactpure</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
 </snippet>
