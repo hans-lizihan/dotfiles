@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: react-pure
+# key: reactpure
+# --
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` () => {
+  return (
+    <div>$0</div>
+  );
+};
+
+`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.propTypes = {
+
+};
+
+export default `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`;

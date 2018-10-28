@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: react-class
+# key: reactclass
+# --
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
+export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends PureComponent {
+  static propTypes = {
+    
+  };
+
+  return (
+    <div>$0</div>
+  );
+};
