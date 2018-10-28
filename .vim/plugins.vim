@@ -6,6 +6,7 @@ endif
 
 "--------------------Plugins----------------------
 call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/xoria256.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'SirVer/ultisnips'
