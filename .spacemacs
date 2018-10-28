@@ -31,21 +31,19 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     imenu-list
+     yaml
      helm
-     auto-completion
      elixir
      ruby
+     ruby-on-rails
      ;; better-defaults
      emacs-lisp
      html
-     react
      git
      markdown
      ;; org
@@ -57,13 +55,18 @@ values."
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t)
-     version-control
-     )
+     ;; version-control
+   )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(editorconfig
+                                      nord-theme
+                                      ujelly-theme
+                                      color-theme-sanityinc-tomorrow
+                                      rjsx-mode
+                                      all-the-icons
                                       add-node-modules-path)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -136,9 +139,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(apropospriate-dark
+   dotspacemacs-themes '(nord
+                         apropospriate-dark
                          sanityinc-tomorrow-eighties
-                         nord
+                         ujelly
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -313,7 +317,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+ )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -322,15 +326,26 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq neo-theme 'nerd)
+
+  ;; beautiful titlebar
+  (when (memq window-system '(mac ns))
+    (add-to-list 'default-frame-alist
+                 '(ns-transparent-titlebar . t))
+    (add-to-list 'default-frame-alist
+                 '(ns-appearance . dark))) ;; or dark - depending on your theme
+
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq projectile-enable-caching t)
+
   (unless (display-graphic-p)
     (setq linum-format "%d "))
   (unless window-system
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
-  (use-package editorconfig)
+  ;; editorconfig configs
   (editorconfig-mode 1)
-  (setq default-text-properties '(line-spacing 0.5 line-height 1.5))
+  ;; Just for configuring the lineheight correctly in the GUI mode
+  (setq default-text-properties '(line-spacing 0.3 line-height 1.2))
   ;;===== Node setup:
   ;;  1. Careful of global ($npm -g install <module>) vs. local ./node-modules
   ;;  2. Best to use local as conflicts between projects might occur
@@ -340,7 +355,10 @@ you should place your code here."
   ;; stop default linter - use ESLint linter as part of FlyCheck
   (setq js2-mode-show-parse-errors nil js2-mode-show-strict-warnings nil)
   (eval-after-load 'js2-mode
-    '(add-hook 'js2-mode-hook #'add-node-modules-path))
+   '(add-hook 'js2-mode-hook #'add-node-modules-path))
+  (add-hook 'rjsx-mode-hook 'emmet-mode) ;; enable Emmet's jsx abbreviation.
+  (eval-after-load 'rjsx-mode
+    '(setq emmet-expand-jsx-className? t))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -369,9 +387,10 @@ you should place your code here."
     ("#FFEE58" "#C5E1A5" "#80DEEA" "#64B5F6" "#E1BEE7" "#FFCC80")))
  '(highlight-symbol-foreground-color "#E0E0E0")
  '(highlight-tail-colors (quote (("#7f007f" . 0) ("#424242" . 100))))
+ '(hl-sexp-background-color "#efebe9")
  '(package-selected-packages
    (quote
-    (xterm-color shell-pop multi-term git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter eshell-z eshell-prompt-extras esh-help diff-hl add-node-modules-path color-theme-sanityinc-tomorrow-eighties-theme rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ghub treepy graphql editorconfig imenu-list yaml-mode spacegrey-theme web-mode web-beautify tagedit smeargle slim-mode scss-mode sass-mode pug-mode orgit ob-elixir mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-credo flycheck evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data company-tern dash-functional tern company-statistics coffee-mode auto-yasnippet yasnippet alchemist company elixir-mode ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (ujelly-theme oceanic-theme color-theme-sanityinc-tomorrow material-theme nord-theme rjsx-mode projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy memoize all-the-icons flyspell-correct-helm flyspell-correct auto-dictionary org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot xterm-color shell-pop multi-term git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter eshell-z eshell-prompt-extras esh-help diff-hl add-node-modules-path color-theme-sanityinc-tomorrow-eighties-theme rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ghub treepy graphql editorconfig imenu-list yaml-mode spacegrey-theme web-mode web-beautify tagedit smeargle slim-mode scss-mode sass-mode pug-mode orgit ob-elixir mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck-mix flycheck-credo flycheck evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data company-tern dash-functional tern company-statistics coffee-mode auto-yasnippet yasnippet alchemist company elixir-mode ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(pos-tip-background-color "#000000")
  '(pos-tip-foreground-color "#9E9E9E")
  '(tabbar-background-color "#000000")
