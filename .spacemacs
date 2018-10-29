@@ -332,6 +332,21 @@ you should place your code here."
     (add-to-list 'default-frame-alist
                  '(ns-appearance . dark))) ;; or dark - depending on your theme
 
+  ;; to make the cursor greater again
+  (defun my-send-string-to-terminal (string)
+    (unless (display-graphic-p) (send-string-to-terminal string)))
+
+  (defun my-evil-terminal-cursor-change ()
+    (when (string= (getenv "TERM_PROGRAM") "iTerm.app")
+      (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\e]50;CursorShape=1\x7")))
+      (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\e]50;CursorShape=0\x7"))))
+    (when (and (getenv "TMUX") (string= (getenv "TERM_PROGRAM") "iTerm.app"))
+      (add-hook 'evil-insert-state-entry-hook (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=1\x7\e\\")))
+      (add-hook 'evil-insert-state-exit-hook  (lambda () (my-send-string-to-terminal "\ePtmux;\e\e]50;CursorShape=0\x7\e\\")))))
+
+  (add-hook 'after-make-frame-functions (lambda (frame) (my-evil-terminal-cursor-change)))
+  (my-evil-terminal-cursor-change)
+
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (setq projectile-enable-caching t)
 
